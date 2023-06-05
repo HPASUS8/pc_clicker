@@ -1,33 +1,31 @@
-### Импорты ###
 import pygame
 import random
-### Респавн ###
+
 def respawn():
     tr.x = random.randint(0, ww - tr.w)
     tr.y = random.randint(0, wh - tr.h)
-### Pygame ###
+
 pygame.init()
 pygame.font.init()
-### Дисплей ###
-# Название окна #
+
 pygame.display.set_caption('Кликер')
-# Переменные #
+
 ww = 350 
 wh = 600 
 screen_s = (ww, wh)
 screen_c = (ww // 2, wh // 2)
 screen_t = (ww // 2, 0)
-# Размер дисплея #
+
 screen = pygame.display.set_mode(screen_s)
-# FPS #
+
 fps = 60
 cl = pygame.time.Clock()
-# Шрифты #
+
 font = pygame.font.match_font('Comic Sans MS')
 f64 = pygame.font.Font(font, 64)
 f32 = pygame.font.Font(font, 32)
 f20 = pygame.font.Font(font, 20)
-### Переменные для игр ###
+
 init = 2000
 finish = init
 decrease = 1.002
@@ -39,13 +37,13 @@ rr = btr.get_rect()
 rr.midtop = screen_c
 
 score = 0
-### Картина ###
+
 img = pygame.image.load('pc.png')
 img = pygame.transform.scale(img, (80, 120))
 tr = img.get_rect()
-### Код для респавна ###
+
 respawn()
-### Клавиши ###
+
 run = True
 while run:
     for e in pygame.event.get():
@@ -64,7 +62,7 @@ while run:
                     respawn()
                     lastrs = pygame.time.get_ticks()
                     finish = init / (decrease ** score)
-    ### Экран ###
+   
     cl.tick(fps)
 
     screen.fill((255, 208, 202))
